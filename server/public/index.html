@@ -3,29 +3,38 @@
   <head>
     <meta charset="utf-8">
     <title>Server-Side Calculator</title>    
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script defer src="scripts/axios.js"></script>
     <script defer src="scripts/client.js" charset="utf-8"></script>
   </head>
   <body>
     <h1>Server-Side Calculator</h1>
 
-    <form data-testid="calculator">
-      <input placeholder="First Number">
-      <button>+</button>
-      <button>-</button>
-      <button>*</button>
-      <button>/</button>
-      <input placeholder="Second Number">
-      <button>=</button>
-      <button>C</button>
+    <form id="calculator" onsubmit="submitCalcInfo(event)" data-testid="calculator">
+      <input id="input_1" placeholder="First Number">
+      <button id="add-btn">+</button>
+      <button id="subtract-btn">-</button>
+      <button id="multiply-btn">*</button>
+      <button id="divide-btn">/</button>
+      <input id="input_2" placeholder="Second Number">
+      <button id="equals-btn" type="submit">=</button>
+      
     </form>
+    <section>
+      <button id="clear-btn" onclick="clearInputs(event)">C</button>
+    </section>
 
-    <section data-testid="recentResult">
+    <section id="recentResult" data-testid="recentResult">
       <!-- The most recent calculation result goes here. -->
     </section>
 
-    <section data-testid="resultHistory">
+    <section id="resultHistory" data-testid="resultHistory">
       <!-- The list of calculation results goes here. -->
+        <h2>Calculations History</h2>
+        <ul>
+          <li></li>
+          <li></li>
+        </ul>
     </section>
   </body>
 </html>

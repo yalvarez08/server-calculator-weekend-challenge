@@ -9,6 +9,7 @@ app.use(express.static('server/public'));
 // calculation objects:
 let calculations = [];
 
+// objects in array should look like:
 //  [
 //   {
 //     numOne: 3,

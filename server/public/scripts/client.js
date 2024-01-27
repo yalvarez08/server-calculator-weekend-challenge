@@ -10,8 +10,8 @@ function onReady() {
 
     let userInputs = {
         input1: document.getElementById("input_1").value,
-        input2: document.getElementById("input_2").value
-
+        input2: document.getElementById("input_2").value,
+        operator:
     };
     axios({  //make POST request to send to server
         method: "POST",
@@ -28,6 +28,17 @@ function onReady() {
             alert('Request to POST /calculations failed.');
             console.log("error", error);
           });
+  }
+
+  function clearInputs(event) {
+    axios({
+        method: "POST",
+        url: "/clear",
+      })
+      .then((res) => {
+        document.getElementById("resultHistory").innerHTML = "";  
+      })
+      .catch((error) => console.log("error", error));
   }
 
   function resultHistory() {

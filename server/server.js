@@ -12,18 +12,19 @@ let calculations = [];
 // objects in array should look like:
 //  [
 //   {
-//     numOne: 3,
-//     numTwo: 5,
+//     input1: 3,
+//     input2: 5,
 //     operator: '+',
 //     result: 8
 //   },
 //   {
-//     numOne: 11,
-//     numTwo: 7,
+//     input1: 11,
+//     input2: 7,
 //     operator: '-',
 //     result: 4
 //   }
 //  ]
+const calculatorDiv = document.getElementById('calc-container');
 
 
 // Here's a wonderful place to make some routes:
@@ -38,6 +39,7 @@ app.get('/calculations', (req, res) => {
 // POST /calculations
 app.post('/calculations', (req, res) => {
   console.log(req.body);
+// math logic for inputs
 
 })
 

@@ -11,14 +11,15 @@
     <h1>Server-Side Calculator</h1>
 
     <form id="calculator" onsubmit="submitCalcInfo(event)" data-testid="calculator">
-      <input id="input_1" placeholder="First Number">
-      <button id="add-btn">+</button>
-      <button id="subtract-btn">-</button>
-      <button id="multiply-btn">*</button>
-      <button id="divide-btn">/</button>
-      <input id="input_2" placeholder="Second Number">
-      <button id="equals-btn" type="submit">=</button>
-      
+      <div id="calc_container">
+        <input id="input_1" placeholder="First Number">
+        <button id="add-btn" class="operator" data-action="add" >+</button>
+        <button id="subtract-btn" class="operator" data-action="subtract">-</button>
+        <button id="multiply-btn" class="operator" data-action="multiply">*</button>
+        <button id="divide-btn" class="operator" data-action="divide">/</button>
+        <input id="input_2" placeholder="Second Number">
+        <button id="equals-btn" type="submit">=</button>
+      </div>
     </form>
     <section>
       <button id="clear-btn" onclick="clearInputs(event)">C</button>

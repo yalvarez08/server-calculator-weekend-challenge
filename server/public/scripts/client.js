@@ -7,6 +7,14 @@ function onReady() {
 
   function submitCalcInfo(event) {
     event.preventDefault();
+    // objects in array should look like:
+//  [
+//   {
+//     input1: 3,
+//     input2: 5,
+//     operator: '+'
+//   }
+//  ]
 
     let userInputs = {
         input1: document.getElementById("input_1").value,

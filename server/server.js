@@ -39,11 +39,6 @@ app.get('/calculations', (req, res) => {
 
 
 // POST /calculations
-// userInputs = {
-//   input1: document.getElementById("input_1").value,
-//   input2: document.getElementById("input_2").value,
-//   operator: document.querySelector(".operator").value,
-// };
 app.post('/calculations', (req, res) => {
 // console.log(req.body);
   let calculations = req.body;
@@ -73,27 +68,33 @@ let operator = calculations.operator;
   if (operator === '/') {
     result = num1 / num2;
   }
-  
+
 console.log('result is:', result);
   
-let output = { 
+// let output = { 
+//   input1: num1,
+//   input2: num2,
+//   operator: operator,
+//   result: result
+// }
+
+// console.log(output);
+calculations.push({
   input1: num1,
   input2: num2,
   operator: operator,
   result: result
-}
+  });
 
-console.log(output);
-calculations.push(output);
+res.send(201);
+});
 
-res.sendStatus(201);
-})
-
-app.delete('/calculations') , (req, res) => {
+app.delete('/calculations', (req, res) => {
   calculations = [];
   console.log('204 status: No content')
   res.send(204);
-}
+});
+
 // PLEASE DO NOT MODIFY ANY CODE BELOW THESE BEARS:
 // 🐻  🐻‍❄️  🧸  🐻  🐻‍❄️  🧸  🐻  🐻‍❄️  🧸  🐻  🐻‍❄️  🧸
 

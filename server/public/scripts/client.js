@@ -1,4 +1,5 @@
 console.log("client.js is sourced!");
+let operator;
 
 function onReady() {
     
@@ -17,12 +18,32 @@ function onReady() {
 //     operator: '+'
 //   }
 //  ]
+let input1 = document.getElementById("input_1").value;
+let input2 = document.getElementById("input_2").value;
+let operator = document.querySelector('data-action');
+if (operator === "add") {
+    operator = "+"
+}
+if (operator === "subtract") {
+    operator = "-"
+}
+if (operator === "multiply") {
+    operator = "*"
+}
+if (operator === "divide") {
+    operator = "/"
+}
 
     let userInputs = {
-        input1: document.getElementById("input_1").value,
-        input2: document.getElementById("input_2").value,
-        operator: document.querySelector(".operator").value,
+        input1: input1,
+        input2: input2,
+        operator: operator,
     };
+    userInputs.input1 = Number(userInputs.input1);
+    userInputs.input2 = Number(userInputs.input2);
+    
+   
+
     axios({  //make POST request to send to server
         method: "POST",
         url: "/calculations",
@@ -30,9 +51,10 @@ function onReady() {
       })
         .then (function(response) {
             console.log('request to POST /calculations succeeded.', response.status);
+            retrieveCalculations();
             document.getElementById("input_1").value = "";
             document.getElementById("input_2").value = "";
-            document.querySelector(".operator").value = "";
+            operator = "";
             
         })
         .catch(function (error) {
@@ -40,12 +62,13 @@ function onReady() {
             console.log("error", error);
           });
   }
+ 
 
   function clearInputs(event) {
     event.preventDefault();
         document.getElementById("input_1").value = "";  
         document.getElementById("input_2").value = "";  
-        document.querySelector(".operator").innerHTML = "";
+        operator = "";
   }
 
   function clearCalcHistory(event) {
@@ -59,15 +82,14 @@ function onReady() {
         retrieveCalculations();
         document.getElementById("input_1").value = "";  
         document.getElementById("input_2").value = "";  
-        document.querySelector(".operator").innerHTML = "";
-        document.getElementById("recentResult").value = "";
+        operator = "";
+        document.getElementById("recentResult").innerHTML = "";
     })
     .catch (function(error) {
         console.log("error", error);
     });
   }
 
-let calculatorDiv = document.getElementById("calculator_div");
   function retrieveCalculations() {
     axios({
         method: "GET",
@@ -77,15 +99,6 @@ let calculatorDiv = document.getElementById("calculator_div");
         console.log('request to GET /calculations succeeded.', response.status);
         console.log(response.data);
 
-    // const operatorAction = document.querySelector('data-action');
-    // if (
-    //     operatorAction === "add" ||
-    //     operatorAction === "subtract" ||
-    //     operatorAction === "multiply" ||
-    //     operatorAction === "divide"
-    //     ) {
-    //         calculatorDiv.dataset.operator = action;
-    //     }
     
     let allResults = response.data; //this is an array (calculations array)
     
@@ -94,7 +107,8 @@ let calculatorDiv = document.getElementById("calculator_div");
     for (let result of allResults) {
         document.getElementById("resultHistory").innerHTML += `
         
-            <li>${result.input1}, ${result.operator}, ${result.input2}</li>
+            <li onclick="newCalculation(event, ${result.input1}, ${result.input2}, '${result.operator}')">
+            ${result.input1} ${result.operator} ${result.input2} = ${result.result}</li>
         
         `;
 
@@ -115,6 +129,28 @@ let calculatorDiv = document.getElementById("calculator_div");
       })
       .catch(function (error) {
         alert('Request to GET /calculations failed.');
+        console.log("error", error);
+      });
+  }
+
+  function newCalculation (event, input1, input2, operator) {
+    event.preventDefault();
+    input1 = Number(input1);
+    input2 = Number(input2);
+   
+    axios({
+        method: 'POST',
+        url: '/calculations',
+        data: {input1: input1, input2: input2, operator: operator}
+    })
+    .then(function (response) {
+        console.log(response.status);
+        retrieveCalculations();
+        document.getElementById("input_1").value = "";  
+        document.getElementById("input_2").value = "";
+        operator = "";
+    })
+    .catch(function (error) {
         console.log("error", error);
       });
   }

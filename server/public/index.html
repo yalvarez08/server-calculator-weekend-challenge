@@ -11,14 +11,14 @@
     <h1>Server-Side Calculator</h1>
 
     <form id="calculator" onsubmit="submitCalcInfo(event)" data-testid="calculator">
-      <div id="calc_container">
+      <div id="calculator_div">
         <input id="input_1" placeholder="First Number">
-        <button id="add-btn" class="operator" data-action="add" >+</button>
-        <button id="subtract-btn" class="operator" data-action="subtract">-</button>
-        <button id="multiply-btn" class="operator" data-action="multiply">*</button>
-        <button id="divide-btn" class="operator" data-action="divide">/</button>
+        <button type="button" id="add-btn" class="operator" value="+" data-action="add" >+</button>
+        <button type="button" id="subtract-btn" class="operator" value="-" data-action="subtract">-</button>
+        <button type="button" id="multiply-btn" class="operator" value="*" data-action="multiply">*</button>
+        <button type="button" id="divide-btn" class="operator" value="/" data-action="divide">/</button>
         <input id="input_2" placeholder="Second Number">
-        <button id="equals-btn" type="submit">=</button>
+        <button type="submit" id="equals-btn" value="=">=</button>
       </div>
     </form>
     <section>
@@ -27,15 +27,17 @@
 
     <section id="recentResult" data-testid="recentResult">
       <!-- The most recent calculation result goes here. -->
+      <!--<span></span>-->
     </section>
 
-    <section id="resultHistory" data-testid="resultHistory">
+    <section id="history" data-testid="resultHistory">
       <!-- The list of calculation results goes here. -->
         <h2>Calculations History</h2>
-        <ul>
-          <li></li>
-          <li></li>
+        <ul id="resultHistory">
+          <li>20 - 5 = 15</li>
+          <li>6 * 5 = 30</li>
         </ul>
+        <button onclick="clearCalcHistory(event)">Clear Calculations History</button>
     </section>
   </body>
 </html>

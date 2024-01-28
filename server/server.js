@@ -25,8 +25,9 @@ let calculations = [];
 //   }
 //  ]
 // const calculatorDiv = document.getElementById('calc-container');
-// const operatorAction = document.querySelector('data-action');
-// const arithmetic = ()
+
+//let operatorAction = document.querySelector('data-action');
+
 // Here's a wonderful place to make some routes:
 
 // GET /calculations
@@ -36,17 +37,63 @@ app.get('/calculations', (req, res) => {
   res.send(calculations);
 });
 
-// POST /calculations
-app.post('/calculations', (req, res) => {
-  console.log(req.body);
-// math logic for inputs
-// if (
-//   operatorAction === 'add' || operatorAction === 'subtract' ||
-//   operatorAction === 'multiply' || operatorAction === 'divide'
-// ) 
 
+// POST /calculations
+// userInputs = {
+//   input1: document.getElementById("input_1").value,
+//   input2: document.getElementById("input_2").value,
+//   operator: document.querySelector(".operator").value,
+// };
+app.post('/calculations', (req, res) => {
+// console.log(req.body);
+  let calculations = req.body;
+  console.log(calculations);
+  // let recentInput = calculations[calculations.length - 1];
+  // let recentInput = calculations[calculations.length - 1];
+// math logic for inputs
+let input1 = calculations.input1;
+let input2 = calculations.input2;
+let operator = calculations.operator;
+
+// input1 = Number(input1);
+// input2 = Number(input2);
+// const arithmetic = (input1, operator, input2 ) => {
+  let result;
+  let num1 = parseFloat(input1);
+  let num2 = parseFloat(input2);
+  if (operator === '+') {
+    result = num1 + num2;
+  }
+  if (operator === '-') {
+    result = num1 - num2;
+  }
+  if (operator === '*') {
+    result = num1 * num2;
+  }
+  if (operator === '/') {
+    result = num1 / num2;
+  }
+  
+console.log('result is:', result);
+  
+let output = { 
+  input1: num1,
+  input2: num2,
+  operator: operator,
+  result: result
+}
+
+console.log(output);
+calculations.push(output);
+
+res.sendStatus(201);
 })
 
+app.delete('/calculations') , (req, res) => {
+  calculations = [];
+  console.log('204 status: No content')
+  res.send(204);
+}
 // PLEASE DO NOT MODIFY ANY CODE BELOW THESE BEARS:
 // 🐻  🐻‍❄️  🧸  🐻  🐻‍❄️  🧸  🐻  🐻‍❄️  🧸  🐻  🐻‍❄️  🧸
 

@@ -19,7 +19,7 @@ function onReady() {
     let userInputs = {
         input1: document.getElementById("input_1").value,
         input2: document.getElementById("input_2").value,
-        operator:
+        operator: document.querySelector('.operator')
     };
     axios({  //make POST request to send to server
         method: "POST",
@@ -30,6 +30,7 @@ function onReady() {
             console.log('request to POST /calculations succeeded.', response.status);
             document.getElementById("input_1").value = "";
             document.getElementById("input_2").value = "";
+
             resultHistory();
         })
         .catch(function (error) {
@@ -58,12 +59,21 @@ function onReady() {
         console.log('request to GET /calculations succeeded.', response.status);
 
 
+        // let allResults = response.data;
+        // let recentResult = allResults[allResults.length - 1];
 
-
-
+    let userInputs = {
+        input1: document.getElementById("input_1").value,
+        input2: document.getElementById("input_2").value,
+        operator: document.querySelector('.operator')
+    };
 
     //make history reflect on DOM
-    document.getElementById("resultHistory").innerHTML 
+    document.getElementById("resultHistory").innerHTML += `
+    <ul>
+        <li>${userInputs.input1} ${userInputs.operator} ${userInputs.input2}</li>
+    </ul>
+    `;
 
       })
       .catch(function (error) {

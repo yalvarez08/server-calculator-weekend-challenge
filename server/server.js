@@ -24,9 +24,9 @@ let calculations = [];
 //     result: 4
 //   }
 //  ]
-const calculatorDiv = document.getElementById('calc-container');
-
-
+// const calculatorDiv = document.getElementById('calc-container');
+// const operatorAction = document.querySelector('data-action');
+// const arithmetic = ()
 // Here's a wonderful place to make some routes:
 
 // GET /calculations
@@ -40,6 +40,10 @@ app.get('/calculations', (req, res) => {
 app.post('/calculations', (req, res) => {
   console.log(req.body);
 // math logic for inputs
+// if (
+//   operatorAction === 'add' || operatorAction === 'subtract' ||
+//   operatorAction === 'multiply' || operatorAction === 'divide'
+// ) 
 
 })
 

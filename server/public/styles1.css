@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap');
+body {
+    background-color: #ddeedf;
+    font-family: 'IBM Plex Mono', monospace;
+
+}
+h1 {
+    text-align: center;
+}
+h2 {
+    margin: 20px 80px 20px 170px;
+}
+form {
+    margin: 0 auto;
+    width: 1000px;
+    padding: 2em;
+    border: 1px solid #5c5b5b;
+    border-radius: 1em;
+    font-size: 16px;
+}
+  
+form input {
+    display: inline-flex;
+    font-size: 12px;
+    padding: 1em;
+    border: 1px solid #918d8d;
+    margin: 0 auto;
+    width: 100px;
+    border-radius: 40px;
+    font-family: 'IBM Plex Mono', monospace;
+}
+#calculator_div {
+    display: flex;
+    align-items: center;
+}
+
+.operator {
+    background: #b6cdbd;
+    display: block;
+    margin: 0 auto;
+    border: none;
+    padding: 0.5rem;
+    font-size: 2rem;
+    inline-size: 60px;
+    block-size: 60px;
+    border-radius: 40px;
+    font-family: 'IBM Plex Mono', monospace;
+}
+#equals-btn {
+    background: #b6cdbd;
+    border: none;
+    font-size: 2rem;
+    inline-size: 60px;
+    block-size: 60px;
+    border-radius: 40px;
+    font-family: 'IBM Plex Mono', monospace;
+}
+#clear-btn {
+    background: #b6cdbd;
+    align-items: center;
+    display: block;
+    margin: 0 auto;
+    margin-top: 20px;
+    border: none;
+    font-size: 2rem;
+    inline-size: 60px;
+    width: 200px;
+    block-size: 40px;
+    border-radius: 40px;
+}
+
+#recentResult {
+    font-size: 2rem;
+    text-align: start; 
+    background: #5c715e; 
+    color: #f2f9f1;
+    margin: 20px 80px 20px 170px;
+    width: 800px;
+    padding: 1em;
+    border-radius: 20px;
+}
+ul {
+    list-style-type: none;
+    line-height: 2;
+    padding: 5px 10px;
+    margin: 20px 80px 20px 170px;
+}
+#clear_history {
+    margin: 20px 80px 20px 170px;
+    border: 1px solid #918d8d;
+    background: #f2f9f1;
+    width: 300px;
+    border-radius: 40px;
+    padding: 0.5em;
+}

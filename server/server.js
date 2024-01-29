@@ -41,14 +41,13 @@ app.get('/calculations', (req, res) => {
 // POST /calculations
 app.post('/calculations', (req, res) => {
 // console.log(req.body);
-  let calculations = req.body;
-  console.log(calculations);
-  // let recentInput = calculations[calculations.length - 1];
-  // let recentInput = calculations[calculations.length - 1];
+  let calculationBody = req.body;
+  console.log(calculationBody);
+
 // math logic for inputs
-let input1 = calculations.input1;
-let input2 = calculations.input2;
-let operator = calculations.operator;
+let input1 = calculationBody.input1;
+let input2 = calculationBody.input2;
+let operator = calculationBody.operator;
 
 // input1 = Number(input1);
 // input2 = Number(input2);

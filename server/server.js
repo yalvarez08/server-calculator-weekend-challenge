@@ -54,20 +54,20 @@ let operator = calculations.operator;
 // input2 = Number(input2);
 // const arithmetic = (input1, operator, input2 ) => {
   let result;
-  let num1 = parseFloat(input1);
-  let num2 = parseFloat(input2);
-  if (operator === '+') {
-    result = num1 + num2;
-  }
-  if (operator === '-') {
-    result = num1 - num2;
-  }
-  if (operator === '*') {
-    result = num1 * num2;
-  }
-  if (operator === '/') {
-    result = num1 / num2;
-  }
+  input1 = parseFloat(input1);
+  input2 = parseFloat(input2);
+if (operator === "add" || operator === "+") {
+  result = input1 + input2;
+}
+if (operator === "subtract" || operator === "-") {
+  result = input1 - input2;
+}
+if (operator === "multiply" || operator === "*") {
+  result = input1 * input2;
+}
+if (operator === "divide" || operator === "/") {
+  result = input1 / input2;
+} 
 
 console.log('result is:', result);
   
@@ -80,8 +80,8 @@ console.log('result is:', result);
 
 // console.log(output);
 calculations.push({
-  input1: num1,
-  input2: num2,
+  input1: input1,
+  input2: input2,
   operator: operator,
   result: result
   });
@@ -94,6 +94,34 @@ app.delete('/calculations', (req, res) => {
   console.log('204 status: No content')
   res.send(204);
 });
+
+// switch (operator) {
+//   case '+':
+//     result = num1 + num2;
+//     break;
+//   case '-':
+//     result = num1 - num2;
+//     break;
+//   case '*':
+//     result = num1 * num2;      
+//     break;
+//   case '/':
+//     result = num1 / num2;
+//     break;
+// }
+
+// if (operator === '+') {
+//   result = num1 + num2;
+// }
+// if (operator === '-') {
+//   result = num1 - num2;
+// }
+// if (operator === '*') {
+//   result = num1 * num2;
+// }
+// if (operator === '/') {
+//   result = num1 / num2;
+// }
 
 // PLEASE DO NOT MODIFY ANY CODE BELOW THESE BEARS:
 // 🐻  🐻‍❄️  🧸  🐻  🐻‍❄️  🧸  🐻  🐻‍❄️  🧸  🐻  🐻‍❄️  🧸

@@ -13,18 +13,16 @@
     <form id="calculator" onsubmit="submitCalcInfo(event)" data-testid="calculator">
       <div id="calculator_div">
         <input id="input_1" placeholder="First Number">
-        <button type="button" id="add-btn" class="operator" value="+" data-action="add" >+</button>
-        <button type="button" id="subtract-btn" class="operator" value="-" data-action="subtract">-</button>
-        <button type="button" id="multiply-btn" class="operator" value="*" data-action="multiply">*</button>
-        <button type="button" id="divide-btn" class="operator" value="/" data-action="divide">/</button>
+        <button type="button" id="add-btn" class="operator" value="+" onclick="operationAdd(event)">+</button>
+        <button type="button" id="subtract-btn" class="operator" value="-" onclick="operationSub(event)">-</button>
+        <button type="button" id="multiply-btn" class="operator" value="*" onclick="operationMult(event)">*</button>
+        <button type="button" id="divide-btn" class="operator" value="/" onclick="operationDivide(event)">/</button>
         <input id="input_2" placeholder="Second Number">
         <button type="submit" id="equals-btn" value="=">=</button>
       </div>
-    </form>
-    <section>
       <button id="clear-btn" onclick="clearInputs(event)">C</button>
-    </section>
-
+    </form>
+    
     <section id="recentResult" data-testid="recentResult">
       <!-- The most recent calculation result goes here. -->
       <!--<span></span>-->
